@@ -27,4 +27,17 @@ public class InventoryService {
         return inventoryRepository.save(item);
     }
 
+    public Item updateItem(Item newItem, Long id) {
+        return inventoryRepository.findById(id)
+                .map(item -> {
+                    item.setName(newItem.getName());
+                    item.setPrice(newItem.getPrice());
+                    return inventoryRepository.save(item);
+                })
+                .orElseGet(() -> {
+                    newItem.setId(id);
+                    return inventoryRepository.save(newItem);
+                });
+    }
+
 }
