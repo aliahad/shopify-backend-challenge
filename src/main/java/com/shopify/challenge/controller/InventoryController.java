@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,11 @@ public class InventoryController {
     @PostMapping("/item")
     public Item addItem(@RequestBody Item item) {
         return inventoryService.addItem(item);
+    }
+
+    @PutMapping("/item/{id}")
+    public Item updateItem(@RequestBody Item item, @PathVariable Long id) {
+        return inventoryService.updateItem(item, id);
     }
 
 }
