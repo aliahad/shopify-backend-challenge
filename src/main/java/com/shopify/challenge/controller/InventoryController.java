@@ -3,6 +3,7 @@ package com.shopify.challenge.controller;
 import com.shopify.challenge.entity.Item;
 import com.shopify.challenge.service.InventoryService;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,11 @@ public class InventoryController {
     @PutMapping("/item/{id}")
     public Item updateItem(@RequestBody Item item, @PathVariable Long id) {
         return inventoryService.updateItem(item, id);
+    }
+
+    @DeleteMapping("/item/{id}")
+    public void deleteItem(@PathVariable Long id) {
+        inventoryService.deleteItem(id);
     }
 
 }
