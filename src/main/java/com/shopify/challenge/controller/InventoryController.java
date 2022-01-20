@@ -3,6 +3,8 @@ package com.shopify.challenge.controller;
 import com.shopify.challenge.entity.Item;
 import com.shopify.challenge.service.InventoryService;
 import lombok.AllArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +46,11 @@ public class InventoryController {
     @DeleteMapping("/item/{id}")
     public void deleteItem(@PathVariable Long id) {
         inventoryService.deleteItem(id);
+    }
+
+    @GetMapping("/items.csv")
+    public ResponseEntity<Resource> getAllItemsAsCsv() {
+        return inventoryService.getAllItemsAsCsv();
     }
 
 }
