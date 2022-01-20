@@ -23,4 +23,8 @@ public class InventoryService {
                 .orElseThrow(() -> new ItemNotFoundException(id));
     }
 
+    public Item addItem(Item item) {
+        return inventoryRepository.save(item);
+    }
+
 }
