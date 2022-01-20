@@ -40,4 +40,8 @@ public class InventoryService {
                 });
     }
 
+    public void deleteItem(Long id) {
+        inventoryRepository.deleteById(id);
+    }
+
 }
